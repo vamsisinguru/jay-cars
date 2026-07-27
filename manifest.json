@@ -1,0 +1,21 @@
+{
+  "name": "Jay Car Travels & Services | Car Rental & Self Drive Ongole",
+  "short_name": "Jay Car Travels",
+  "description": "Book Self Drive Cars, Driver Services, Tempo Traveller, Airport Pickups & Outstation Travel in Ongole.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFC107",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

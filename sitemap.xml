@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://jay-cars.vercel.app/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://jay-cars.vercel.app/images/logo.png</image:loc>
+      <image:title>Jay Car Travels &amp; Services Official Logo Ongole</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jay-cars.vercel.app/images/dzire_red.png</image:loc>
+      <image:title>Red Maruti Suzuki Dzire Self Drive Car Rental Ongole</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jay-cars.vercel.app/images/hero_white_innova.png</image:loc>
+      <image:title>Toyota Innova Crysta Rental Ongole Court Center</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://jay-cars.vercel.app/images/tempo_traveller.png</image:loc>
+      <image:title>Tempo Traveller Rental Ongole for Family Trips</image:title>
+    </image:image>
+  </url>
+</urlset>

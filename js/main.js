@@ -421,4 +421,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ----------------------------------------------------------------------
+       8. FAQ ACCORDION HANDLER
+       ---------------------------------------------------------------------- */
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const faqAnswer = faqItem.querySelector('.faq-answer');
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+            // Close all other open FAQ items
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.setAttribute('aria-expanded', 'false');
+                const ans = q.parentElement.querySelector('.faq-answer');
+                if (ans) {
+                    ans.classList.remove('show');
+                    ans.style.maxHeight = '0px';
+                }
+            });
+
+            // Toggle current FAQ item
+            if (!isExpanded) {
+                question.setAttribute('aria-expanded', 'true');
+                faqAnswer.classList.add('show');
+                faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 30 + 'px';
+            }
+        });
+    });
+
 });
