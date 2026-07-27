@@ -1,14 +1,12 @@
 /* ==========================================================================
    JAY CAR TRAVELS & SERVICES - CLEAN WHITE PROFESSIONAL STYLESHEET
    Theme: Pure White (#FFFFFF), Deep Dark Text (#0F172A), Brand Yellow (#FFC107 / #D97706), Subtle Light Grey (#F8FAFC / #E2E8F0)
-   Font: Okra (or Inter / system-ui fallback)
+   Font: Inter (Google Fonts) / system-ui fallback
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. DESIGN TOKENS & RESET
    -------------------------------------------------------------------------- */
-@import url('https://fonts.cdnfonts.com/css/okra');
-
 :root {
     --primary-yellow: #FFC107;
     --primary-yellow-hover: #FFB300;
@@ -26,7 +24,7 @@
     --text-muted: #64748B;
     --text-dark: #090D16;
 
-    --font-family: 'Okra', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -89,6 +87,7 @@ ul {
 .section {
     padding: 90px 0;
     position: relative;
+    scroll-margin-top: 80px;
 }
 
 .section-header {
@@ -243,7 +242,7 @@ ul {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 10001;
     padding: 14px 0;
     background: #FFFFFF;
     border-bottom: 1px solid var(--border-subtle);
@@ -353,6 +352,7 @@ ul {
     position: relative;
     padding-top: 145px;
     padding-bottom: 85px;
+    scroll-margin-top: 0;
     background: #FFFFFF;
     overflow: hidden;
 }
@@ -983,152 +983,7 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   11. COUNTER SECTION
-   -------------------------------------------------------------------------- */
-.counter-section {
-    padding: 60px 0;
-    background: #FFFFFF;
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-.counter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 25px;
-    text-align: center;
-}
-
-.counter-icon {
-    font-size: 2rem;
-    color: var(--primary-yellow-dark);
-    margin-bottom: 8px;
-}
-
-.counter-number, .counter-text {
-    display: inline-block;
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1;
-}
-
-.counter-plus {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--primary-yellow-dark);
-}
-
-.counter-box p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-top: 6px;
-    font-weight: 600;
-}
-
-/* --------------------------------------------------------------------------
-   12. PHOTO GALLERY
-   -------------------------------------------------------------------------- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 18px;
-}
-
-.gallery-item {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.g-inner {
-    position: relative;
-    height: 230px;
-    overflow: hidden;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-}
-
-.g-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.g-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 70%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover .g-overlay {
-    opacity: 1;
-}
-
-.g-overlay h4 {
-    color: #FFFFFF;
-    font-size: 1rem;
-    margin-bottom: 4px;
-}
-
-.zoom-icon {
-    font-size: 0.8rem;
-    color: var(--primary-yellow);
-    font-weight: 600;
-}
-
-/* Lightbox Modal */
-.lightbox-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    background: rgba(0, 0, 0, 0.88);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.lightbox-modal.show {
-    display: flex;
-}
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 80vh;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-}
-
-.lightbox-caption {
-    margin-top: 14px;
-    font-size: 1.05rem;
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 2.5rem;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-/* --------------------------------------------------------------------------
-   13. CUSTOMER REVIEWS SYSTEM
+   12. CUSTOMER REVIEWS SYSTEM
    -------------------------------------------------------------------------- */
 .reviews-section {
     background: var(--bg-light-alt);
@@ -1705,9 +1560,7 @@ ul {
 .nav-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.5);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: rgba(15, 23, 42, 0);
     z-index: 9998;
     opacity: 0;
     visibility: hidden;
@@ -1731,9 +1584,6 @@ ul {
     .vehicles-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
     .services-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -1746,9 +1596,6 @@ ul {
 @media (min-width: 1024px) and (max-width: 1439px) {
     .vehicles-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-    .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
     }
     .services-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1782,10 +1629,6 @@ ul {
 
     .vehicles-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
     }
 
     .services-grid {
@@ -1842,6 +1685,7 @@ ul {
 
     .mobile-toggle {
         display: flex;
+        position: relative;
         z-index: 10000;
     }
 }
@@ -1967,16 +1811,6 @@ ul {
         grid-template-columns: 1fr;
     }
 
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .g-inner {
-        aspect-ratio: 4 / 3;
-        height: auto;
-    }
-
     .services-grid {
         grid-template-columns: 1fr;
     }
@@ -2055,16 +1889,6 @@ ul {
         height: 40px;
     }
 
-    .lightbox-close {
-        top: 12px;
-        right: 18px;
-        font-size: 2.2rem;
-    }
-
-    .lightbox-content {
-        max-width: 95vw;
-        max-height: 75vh;
-    }
 }
 
 /* Extra Small Phones (< 480px) */
@@ -2121,7 +1945,132 @@ ul {
         width: 100%;
     }
 
-    .gallery-grid {
+}
+
+/* --------------------------------------------------------------------------
+   18. CONTACT & FLOATING BUTTONS MOBILE FIX
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .contact-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px;
+    }
+
+    .contact-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+
+    .contact-details,
+    .info-list-card {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .contact-details h3,
+    .info-list-card strong {
+        word-break: break-word;
+    }
+
+    .contact-phone,
+    .info-item p,
+    .info-item a {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        font-size: 1rem;
+    }
+
+    .btn-whatsapp-card,
+    .btn-yellow-card {
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+    }
+
+    .info-list-card {
+        padding: 18px;
+    }
+
+    .info-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .info-item i {
+        flex-shrink: 0;
+    }
+
+    .contact-map-col {
+        padding: 18px;
+    }
+
+    .map-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        aspect-ratio: 16 / 9;
+    }
+
+    .map-container iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 10px;
+    }
+
+    .quick-booking-box {
+        padding: 16px;
+    }
+
+    .quick-booking-box .form-row {
+        grid-template-columns: 1fr;
+        margin-bottom: 10px;
+    }
+
+    .quick-booking-box input,
+    .quick-booking-box select {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .quick-booking-box .btn {
+        white-space: normal;
+        font-size: 0.9rem;
+        padding: 12px 16px;
+    }
+
+    .contact-section {
+        padding-bottom: 120px;
+    }
+
+    .floating-buttons {
+        bottom: 12px;
+        right: 12px;
+        gap: 10px;
+    }
+
+    .float-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+
+    .back-to-top {
+        bottom: 12px;
+        left: 12px;
+        width: 40px;
+        height: 40px;
     }
 }

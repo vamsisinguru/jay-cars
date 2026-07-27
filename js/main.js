@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
         }
         document.body.style.overflow = '';
+        document.body.style.touchAction = '';
     }
 
     function openNavMenu() {
@@ -83,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileToggle && mobileToggle.querySelector('i')) {
             mobileToggle.querySelector('i').className = 'fa-solid fa-xmark';
         }
+        document.body.style.overflow = 'hidden';
+        document.body.style.touchAction = 'none';
     }
 
     if (mobileToggle && navMenu) {
@@ -99,7 +102,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         navLinks.forEach(link => {
-            link.addEventListener('click', closeNavMenu);
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                if (!targetId || !targetId.startsWith('#')) return;
+
+                e.preventDefault();
+                closeNavMenu();
+
+                const targetEl = document.querySelector(targetId);
+                if (!targetEl) return;
+
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                // Smooth scroll that works on all mobile browsers
+                const supportsSmooth = 'scrollBehavior' in document.documentElement.style;
+                if (supportsSmooth) {
+                    window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                } else {
+                    window.scrollTo(0, targetPos);
+                }
+
+                // Fallback: also try scrollIntoView after menu closes
+                setTimeout(() => {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 350);
+            });
         });
     }
 
@@ -123,78 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-        });
-    }
-
-    /* ----------------------------------------------------------------------
-       4. ANIMATED COUNTERS ON SCROLL
-       ---------------------------------------------------------------------- */
-    const counterNumbers = document.querySelectorAll('.counter-number');
-    let countersStarted = false;
-
-    function startCounters() {
-        const counterSection = document.querySelector('.counter-section');
-        if (!counterSection) return;
-
-        const sectionTop = counterSection.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (sectionTop < windowHeight - 80 && !countersStarted) {
-            countersStarted = true;
-
-            counterNumbers.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'), 10);
-                const duration = 1800;
-                const increment = target / (duration / 16);
-                let current = 0;
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.ceil(current);
-                    }
-                }, 16);
-            });
-        }
-    }
-
-    window.addEventListener('scroll', startCounters);
-    startCounters();
-
-    /* ----------------------------------------------------------------------
-       5. PHOTO GALLERY LIGHTBOX MODAL
-       ---------------------------------------------------------------------- */
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const lightboxClose = document.querySelector('.lightbox-close');
-
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            const overlayTitle = item.querySelector('.g-overlay h4')?.textContent || '';
-
-            if (lightbox && lightboxImg) {
-                lightboxImg.src = img.src;
-                lightboxCaption.innerHTML = `<strong>${overlayTitle}</strong>`;
-                lightbox.classList.add('show');
-            }
-        });
-    });
-
-    if (lightboxClose && lightbox) {
-        lightboxClose.addEventListener('click', () => {
-            lightbox.classList.remove('show');
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('show');
-            }
         });
     }
 
