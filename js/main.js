@@ -66,24 +66,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const navOverlay = document.getElementById('nav-overlay');
+
+    function closeNavMenu() {
+        if (navMenu) navMenu.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+        if (mobileToggle && mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+        }
+        document.body.style.overflow = '';
+    }
+
+    function openNavMenu() {
+        if (navMenu) navMenu.classList.add('active');
+        if (navOverlay) navOverlay.classList.add('active');
+        if (mobileToggle && mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').className = 'fa-solid fa-xmark';
+        }
+    }
+
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
             if (navMenu.classList.contains('active')) {
-                icon.className = 'fa-solid fa-xmark';
+                closeNavMenu();
             } else {
-                icon.className = 'fa-solid fa-bars';
+                openNavMenu();
             }
         });
 
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeNavMenu);
+        }
+
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                if (mobileToggle.querySelector('i')) {
-                    mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
-                }
-            });
+            link.addEventListener('click', closeNavMenu);
         });
     }
 

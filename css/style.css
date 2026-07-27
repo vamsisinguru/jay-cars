@@ -1606,60 +1606,121 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   17. RESPONSIVE BREAKPOINTS
+   17. NAVIGATION OVERLAY BACKDROP
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --------------------------------------------------------------------------
+   18. COMPREHENSIVE RESPONSIVE BREAKPOINTS (MOBILE, TABLET, LAPTOP, DESKTOP)
+   -------------------------------------------------------------------------- */
+
+/* Large Desktop (1440px and above) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+    .vehicles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .why-us-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Standard Laptop & Desktop (1024px – 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .vehicles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .why-us-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablets & Small Laptops (768px – 1023px) */
+@media (max-width: 1023px) {
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 32px;
+        text-align: center;
     }
 
     .hero-content-left {
         max-width: 100%;
     }
 
-    .hero-title {
-        font-size: 2.6rem;
+    .hero-slider-right {
+        max-width: 720px;
+        margin: 0 auto;
     }
 
     .about-grid, .pricing-body-grid, .contact-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .vehicles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-us-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .footer-top {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .section {
-        padding: 60px 0;
-    }
-
-    .section-title {
-        font-size: 1.9rem;
-    }
-
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    .sub-line {
-        font-size: 0.95rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 
     .nav-menu {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
-        max-width: 300px;
+        width: 82%;
+        max-width: 320px;
         height: 100vh;
         background: #FFFFFF;
-        padding: 90px 25px 30px 25px;
+        padding: 95px 28px 40px 28px;
         transition: var(--transition);
         border-left: 1px solid var(--border-subtle);
         box-shadow: var(--shadow-lg);
+        z-index: 9999;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1669,11 +1730,99 @@ ul {
     .nav-list {
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        font-size: 1.05rem;
+        padding: 8px 0;
+        border-bottom: 1px solid #F1F5F9;
     }
 
     .mobile-toggle {
         display: flex;
+        z-index: 10000;
+    }
+}
+
+/* Mobile Devices (320px – 767px) */
+@media (max-width: 767px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero-section {
+        padding-top: 110px;
+        padding-bottom: 50px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        margin-bottom: 16px;
+    }
+
+    .hero-trust-badge {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+        margin-bottom: 16px;
+    }
+
+    .sub-line {
+        font-size: 0.92rem;
+    }
+
+    .hero-subtitle-box {
+        margin-bottom: 24px;
+    }
+
+    .section-title {
+        font-size: clamp(1.65rem, 5.5vw, 2.1rem);
+    }
+
+    .section-header {
+        margin-bottom: 35px;
+    }
+
+    .vehicles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .g-inner {
+        aspect-ratio: 4 / 3;
+        height: auto;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-wrapper {
+        padding: 22px 16px;
     }
 
     .pricing-header-banner {
@@ -1690,6 +1839,99 @@ ul {
     }
 
     .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+    }
+
+    .footer-logo {
+        margin: 0 auto 12px auto;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .about-main-img {
+        height: 280px;
+    }
+
+    .about-features-list {
+        grid-template-columns: 1fr;
+    }
+
+    .rating-summary-banner {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .rating-big-box {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .floating-buttons {
+        bottom: 18px;
+        right: 16px;
+        gap: 10px;
+    }
+
+    .float-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+
+    .back-to-top {
+        bottom: 18px;
+        left: 16px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox-close {
+        top: 12px;
+        right: 18px;
+        font-size: 2.2rem;
+    }
+
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 75vh;
+    }
+}
+
+/* Extra Small Phones (< 480px) */
+@media (max-width: 479px) {
+    .center-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .center-actions .btn {
+        width: 100%;
+    }
+
+    .nav-btn {
+        padding: 9px 16px;
+        font-size: 0.85rem;
+    }
+
+    .brand-name {
+        font-size: 1.1rem;
+    }
+
+    .brand-sub {
+        font-size: 0.58rem;
+    }
+
+    .nav-logo {
+        height: 42px;
+    }
+
+    .gallery-grid {
         grid-template-columns: 1fr;
     }
 }
