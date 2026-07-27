@@ -401,6 +401,7 @@ ul {
 .hero-trust-badge {
     display: inline-flex;
     align-items: center;
+    gap: 8px;
     font-size: 0.88rem;
     font-weight: 700;
     color: #0F172A;
@@ -410,6 +411,11 @@ ul {
     border-radius: var(--radius-full);
     margin-bottom: 22px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.hero-trust-badge .badge-icon {
+    color: #D97706;
+    font-size: 0.95rem;
 }
 
 .hero-title {
