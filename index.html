@@ -213,6 +213,7 @@
                     <li><a href="#vehicles" class="nav-link">Vehicles</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#reviews" class="nav-link">Reviews</a></li>
                     <li><a href="#faq" class="nav-link">FAQ</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -805,6 +806,69 @@
                 </div>
             </div>
         </section>
+
+        <!-- GALLERY SECTION -->
+        <section class="section gallery-section" id="gallery">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">OUR TRAVEL GALLERY</span>
+                    <h2 class="section-title">Our Travel <span class="highlight-yellow">Gallery</span></h2>
+                    <p class="section-description">
+                        Explore our vehicles, customer journeys, outstation trips, airport transfers, family tours, and travel experiences.
+                    </p>
+                </div>
+
+                <!-- How to add new images:
+                1. Add a new image to the `images/gallery/` folder.
+                2. Copy the block below from <div class="gallery-item"> to </div>.
+                3. Paste it below the last gallery item.
+                4. Change the `data-src` and `src` attributes to the new image path (e.g., `images/gallery/new-image.jpg`).
+                5. Update the `alt` attribute with a descriptive text for the new image.
+                -->
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.54.59%20(1).jpeg" alt="Gallery image 1" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.54.59%20(1).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.54.59%20(2).jpeg" alt="Gallery image 2" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.54.59%20(2).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.54.59.jpeg" alt="Gallery image 3" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.54.59.jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00%20(1).jpeg" alt="Gallery image 4" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00%20(1).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00%20(2).jpeg" alt="Gallery image 5" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00%20(2).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00%20(3).jpeg" alt="Gallery image 6" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00%20(3).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00.jpeg" alt="Gallery image 7" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.00.jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.01%20(1).jpeg" alt="Gallery image 8" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.01%20(1).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.01%20(2).jpeg" alt="Gallery image 9" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.01%20(2).jpeg" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.01.jpeg" alt="Gallery image 10" class="gallery-img" data-src="images/gallery/WhatsApp%20Image%202026-07-26%20at%2012.55.01.jpeg" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal for Gallery -->
+        <div id="lightbox-modal" class="lightbox-modal">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-content">
+                <img class="lightbox-image" id="lightbox-image">
+                <a class="lightbox-prev">&#10094;</a>
+                <a class="lightbox-next">&#10095;</a>
+            </div>
+        </div>
 
         <!-- REAL CUSTOMER REVIEWS SYSTEM -->
         <section class="section reviews-section" id="reviews">
