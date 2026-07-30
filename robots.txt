@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Crawl-delay: 1
 
 Sitemap: https://jay-cars.vercel.app/sitemap.xml
