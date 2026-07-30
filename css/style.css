@@ -992,23 +992,28 @@ ul {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
     margin-top: 40px;
+    justify-items: center;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 14px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    max-width: 180px;
 }
 
 .gallery-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-img {
@@ -1017,11 +1022,33 @@ ul {
     object-fit: cover;
     display: block;
     cursor: pointer;
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
 }
 
 .gallery-item:hover .gallery-img {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+/* Fade-in animation with JS fallback */
+@keyframes gallery-fallback {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: transform, opacity;
+    animation: gallery-fallback 0.6s ease 1s forwards;
+}
+
+.gallery-fade-in.visible {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Lightbox Modal */
@@ -1036,6 +1063,7 @@ ul {
     background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
+    touch-action: manipulation;
 }
 
 .lightbox-content {
@@ -1099,7 +1127,19 @@ ul {
 /* Responsive Gallery */
 @media (max-width: 1200px) {
     .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .gallery-item {
+        max-width: 170px;
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-item {
+        max-width: 160px;
     }
 }
 
@@ -1108,12 +1148,18 @@ ul {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
+    .gallery-item {
+        max-width: 140px;
+    }
 }
 
 @media (max-width: 420px) {
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+    }
+    .gallery-item {
+        max-width: 140px;
     }
 }
 

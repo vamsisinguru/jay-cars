@@ -389,6 +389,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
 
+    /* Fade-in animation when gallery enters viewport */
+    const galleryGrid = document.querySelector('.gallery-fade-in');
+    if (galleryGrid && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    galleryGrid.classList.add('visible');
+                    observer.unobserve(galleryGrid);
+                }
+            });
+        }, { threshold: 0.15 });
+        observer.observe(galleryGrid);
+    } else if (galleryGrid) {
+        galleryGrid.classList.add('visible');
+    }
+
     if (lightbox) {
         const showImage = (index) => {
             const imgSrc = galleryImages[index].getAttribute('data-src');
@@ -436,6 +452,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // Touch swipe gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) > 50) {
+                if (swipeDistance > 0) {
+                    prevBtn.click();
+                } else {
+                    nextBtn.click();
+                }
+            }
+        }, { passive: true });
     }
 
     /* ----------------------------------------------------------------------
